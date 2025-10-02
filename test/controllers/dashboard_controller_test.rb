@@ -2,7 +2,9 @@ require "test_helper"
 
 class DashboardControllerTest < ActionDispatch::IntegrationTest
   test "should get show" do
-    get dashboard_show_url
+    user = users(:one)  
+    sign_in user
+    get root_path
     assert_response :success
   end
 end
