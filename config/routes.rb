@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :servers do
     scope module: :servers do 
-      resources :channels
+      resources :channels do 
+        scope module: :channels do
+          resources :messages, only: [:create]
+        end
+      end
     end
   end
   devise_for :users
