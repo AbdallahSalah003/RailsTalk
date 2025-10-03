@@ -32,14 +32,10 @@ class ServersController < ApplicationController
 
   # PATCH/PUT /servers/1 or /servers/1.json
   def update
-    respond_to do |format|
-      if @server.update(server_params)
-        format.html { redirect_to @server, notice: "Server was successfully updated.", status: :see_other }
-        format.json { render :show, status: :ok, location: @server }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @server.errors, status: :unprocessable_entity }
-      end
+    if @server.update(server_params)
+      redirect_to @server, notice: "Server was successfully updated.", status: :see_other 
+    else
+      render :edit, status: :unprocessable_entity 
     end
   end
 
@@ -61,6 +57,6 @@ class ServersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def server_params
-      params.expect(server: [ :name])
+      params.expect(server: [ :name, :image ])
     end
 end

@@ -4,7 +4,10 @@
   <div class="flex">
     <%= render "sidebar" %>
     <div class="w-full h-screen">
-      <h1 class="text-2xl text-gray-100 text-center pt-5"> <%= @server.name %> </h1>
+      <div class="w-full flex flex-row justify-center"> 
+        <%= image_tag(@server.image, class:"w-20 h-20 rounded-full object-cover") if @server.image.attached? %>
+        <h1 class="text-2xl text-gray-100 text-center pt-5"> <%= @server.name %> </h1>
+      </div>
       <% if @server.owner == current_user %>
         <div class="w-full flex gap-4 justify-end px-4" >
           <%= link_to "Edit server", edit_server_path(@server), class:"teext-gray-100 px-3 py-2 rounded-lg bg-blue-500" %>
