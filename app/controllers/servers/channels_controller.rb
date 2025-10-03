@@ -1,4 +1,5 @@
 class Servers::ChannelsController < ApplicationController
+  before_action :set_server
   before_action :set_server_channel, only: %i[ show edit update destroy ]
 
   # GET /server/channels or /server/channels.json
@@ -21,16 +22,12 @@ class Servers::ChannelsController < ApplicationController
 
   # POST /server/channels or /server/channels.json
   def create
-    @server_channel = Server::Channel.new(server_channel_params)
+    @server_channel = @server.channels.new(server_channel_params)
 
-    respond_to do |format|
-      if @server_channel.save
-        format.html { redirect_to @server_channel, notice: "Channel was successfully created." }
-        format.json { render :show, status: :created, location: @server_channel }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @server_channel.errors, status: :unprocessable_entity }
-      end
+    if @server_channel.save
+      redirect_to @server, notice: "Channel was successfully created." 
+    else
+      render :new, status: :unprocessable_entity 
     end
   end
 
@@ -58,6 +55,9 @@ class Servers::ChannelsController < ApplicationController
   end
 
   private
+    def set_server
+      @server = Server.find(params[:server_id])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_server_channel
       @server_channel = Server::Channel.find(params.expect(:id))
@@ -65,6 +65,6 @@ class Servers::ChannelsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def server_channel_params
-      params.expect(server_channel: [ :name, :server_id ])
+      params.expect(server_channel: [ :name ])
     end
 end
