@@ -1,12 +1,13 @@
 <% content_for :title, "Showing channel" %>
 
 <%= turbo_frame_tag :dashboard do %>
+  <%= turbo_stream_from @server_channel %>
   <div class="flex">
     <%= render "servers/sidebar" %>
     <div class="w-full h-screen bg-indigo-500 flex flex-col">
       <h1 class="text-2xl text-gray-100 text-center pt-5"> <%= @server_channel.name %> </h1>
 
-      <div class="h-[80vh] w-full flex flex-col px-4 pt-4 gap-4 overflow-y-scroll">
+      <div class="h-[80vh] w-full flex flex-col px-4 pt-4 gap-4 overflow-y-scroll" id="messages">
         <% @server_channel.messages.order(created_at: :asc).each do |message| %>
           <%= render "message", message: message %>
         <% end %>
