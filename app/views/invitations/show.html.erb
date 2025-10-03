@@ -1,0 +1,8 @@
+<div class="w-full h-screen flex flex-col items-center pt-24">
+    <div class="max-w-2xl h-[40vh] w-full rounded-lg bg-gray-600 flex flex-col items-center p-4 pb-15">
+        <h1 class="text-4xl text-gray-100"> Joining Server: <%= @invite_link.server_name %> </h1>
+        <p class="text-xl text-gray-200"> Owned by <%= @invite_link.server.owner.username %>#<%= @invite_link.server.owner.user_numbers%> </p>
+        <%= link_to "Join", invitations_path(uniq_id: @invite_link.uniq_id), class:"px-3 py-2 rounded-lg text-xl bg-blue-600 text-blue-50 mt-auto hover:scale-110 hover:bg-blue-700",
+            data: { turbo_method: :post }%>
+    </div>
+</div>

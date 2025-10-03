@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :servers do
     scope module: :servers do 
+      resources :invite_links, only: [:show, :create]
       resources :channels do 
         scope module: :channels do
           resources :messages, only: [:create]
@@ -8,6 +9,9 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  get "/invite/:uniq_id", to: "invitations#show"
+  resources :invitations, only: [:create]
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

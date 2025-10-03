@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  server: one
+  uniq_id: MyString
+
+two:
+  server: two
+  uniq_id: MyString

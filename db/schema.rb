@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_03_113640) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_03_212938) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -30,6 +30,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_03_113640) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["server_id"], name: "index_server_channels_on_server_id"
+  end
+
+  create_table "server_invite_links", force: :cascade do |t|
+    t.bigint "server_id", null: false
+    t.string "uniq_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["server_id"], name: "index_server_invite_links_on_server_id"
+    t.index ["uniq_id"], name: "index_server_invite_links_on_uniq_id", unique: true
+  end
+
+  create_table "server_memberships", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "server_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["server_id"], name: "index_server_memberships_on_server_id"
+    t.index ["user_id"], name: "index_server_memberships_on_user_id"
   end
 
   create_table "servers", force: :cascade do |t|
@@ -57,5 +75,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_03_113640) do
   add_foreign_key "channel_messages", "server_channels"
   add_foreign_key "channel_messages", "users"
   add_foreign_key "server_channels", "servers"
+  add_foreign_key "server_invite_links", "servers"
+  add_foreign_key "server_memberships", "servers"
+  add_foreign_key "server_memberships", "users"
   add_foreign_key "servers", "users", column: "owner_id"
 end
