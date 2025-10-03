@@ -1,6 +1,7 @@
 module Servers
   class ChannelsController < BaseController
-    before_action :set_server, :authorize_owner!
+    before_action :set_server
+    before_action :authorize_owner!, except: %i[ show ]
     before_action :set_server_channel, only: %i[ show edit update destroy ]
 
     # GET /server/channels or /server/channels.json
