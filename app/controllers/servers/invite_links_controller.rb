@@ -1,5 +1,5 @@
 module Servers 
-  class InviteLinksController < ApplicationController
+  class InviteLinksController < BaseController
     before_action :set_server, :authorize_owner!
 
     def show  
