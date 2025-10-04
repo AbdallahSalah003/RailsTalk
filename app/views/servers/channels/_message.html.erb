@@ -1,4 +1,8 @@
-<div class="rounded-lg p-2 bg-gray-500 text-lg text-gray-100 mr-auto flex flex-col" 
+<div class="rounded-lg p-2  text-lg  flex flex-col"
+    data-controller="message" 
+    data-message-user-id-value="<%= message.user_id %>"
+    data-message-current-user-class="bg-blue-500 text-blue-100 ml-auto"
+    data-message-other-user-class="bg-gray-500 text-gray-100 mr-auto"
     data-auto-scroll-target="scroll">
     <p> <%= message.body %> </p>
     <span >sent by <%= message.user.username %>#<%= message.user.user_numbers%> </span>
