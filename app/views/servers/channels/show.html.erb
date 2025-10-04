@@ -7,7 +7,7 @@
     <div class="w-full h-screen bg-indigo-500 flex flex-col">
       <h1 class="text-2xl text-gray-100 text-center pt-5"> <%= @server_channel.name %> </h1>
 
-      <div class="h-[80vh] w-full flex flex-col px-4 pt-4 gap-4 overflow-y-scroll" id="messages">
+      <div class="h-[80vh] w-full flex flex-col px-4 pt-4 gap-4 overflow-y-scroll" id="messages" data-controller="auto-scroll">
         <% @server_channel.messages.order(created_at: :asc).each do |message| %>
           <%= render "message", message: message %>
         <% end %>
