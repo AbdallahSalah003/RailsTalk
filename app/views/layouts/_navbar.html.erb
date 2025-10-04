@@ -1,6 +1,13 @@
 <div class="w-full h-16 bg-gray-900 flex justify-center fixed top-0">
     <div class="max-w-5xl w-full flex items-center justify-between">
-        <%= link_to "Home", root_path, class:"text-xl text-gray-100" %>
+        <div class="flex items-center gap-2 ml-3">
+            <%= link_to "#", class:"hover:bg-gray-800 hover:rounded-lg", data: {action: "click->sidebar#toggle"} do %>        
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 text-gray-100">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            <% end %>
+            <%= link_to "Home", root_path, class:"text-xl text-gray-100 hover:text-gray-500" %>
+        </div>
         <% if current_user %>
             <div class="flex items-center gap-4">
                 <span class="text-xl text-gray-100">
