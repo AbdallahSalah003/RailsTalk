@@ -1,24 +1,53 @@
-# README
+# RailsTalk
+<h3><i>
+A real-time chat application that allows users to create servers, join channels, and chat instantly.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+</i></h3>
+▶️ [Watch the demo on YouTube](https://youtu.be/x4kFQFFEMcY)
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
 
-* Database creation
+---
 
-* Database initialization
+## Technologies
+<h3>
+Rails 8 | Hotwire | PostgreSQL
+</h3>
 
-* How to run the test suite
+---
 
-* Services (job queues, cache servers, search engines, etc.)
+## Features
+<h4>
+<ul>
+<li>Users can create and manage their own servers.</li>
+<li>Users can join other servers and participate in conversations</li>
+<li>Messages appear instantly using Hotwire without page reloads</li>
+<li>Chat automatically scrolls to the newest messages</li>
+<li>User sign-up, sign-in, and session management.</li>
+<li>Clean design that works on all screen sizes.
+</li>
+</ul>
+</h4>
 
-* Deployment instructions
+---
 
-* ...
+
+
+## ⚙️ Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/AbdallahSalah003/RailsTalk
+   cd RailsTalk
+2. **Install dependencies**
+    ```bash
+    bundle install
+2. **Setup database**
+    ```bash
+    rails db:create db:migrate
+2. **Start the Rails server**
+    ```bash
+    bin/dev
+---
